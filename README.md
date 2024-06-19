@@ -1,7 +1,8 @@
-<h2>
-    <img style="align: center;"src="./assets/image.png">
-    <p>Learn from the past, do it in the present and change the future.</p>
-</h2>
+## ![Logo](./menuscreen/src/img/logo.png)
+
+### Learn from the past, do it in the present, and change the future.
+
+<br>
 
 <h1 style="color:#00BCD4;">Game Project: <strong>Atemporal</strong></h1>
 
