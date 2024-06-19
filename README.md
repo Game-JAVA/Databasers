@@ -1,18 +1,22 @@
-<h2>
-    <img style="align: center;"src="./assets/image.png">
-    <p>Learn from the past, do it in the present and change the future.</p>
-</h2>
+<h1 align="center">
+  <img src="./menuscreen/src/img/logo.png" alt="Logo" width="50%">
+  <p>Learn from the past, do it in the present, and change the future.</h3>
+</h1>
 
-<h1 style="color:#00BCD4;">Game Project: <strong>Atemporal</strong></h1>
+<br>
 
+<h1 style="color:#00BCD4">Game Project: <strong>Atemporal</strong></h1>
+  
 ![GitHub repo size](https://img.shields.io/github/repo-size/Databasers/README-template?style=for-the-badge)
 ![GitHub language count](https://img.shields.io/github/languages/count/Databasers/README-template?style=for-the-badge)
 ![Bitbucket open issues](https://img.shields.io/bitbucket/issues/Databasers/README-template?style=for-the-badge)
 ![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/Databasers/README-template?style=for-the-badge)
 
-<p><strong>Language:</strong> <span style="color:#FF5722;">Java 21</span><br>
-<strong>Framework:</strong> <span style="color:#FF5722;">JavaFX</span><br>
-<strong>Agile Framework:</strong> <span style="color:#FF5722;">Scrum</span></p>
+<p>
+  <p><strong>Language:</strong> <span style="color: #FF5722">Java 21</span><br>
+  <strong>Framework:</strong> <span style="color: #FF5722">JavaFX</span><br>
+  <strong>Agile Framework:</strong> <span style="color: #FF5722">Scrum</span></p>
+</p>
 
 <br>
 
