@@ -3,34 +3,41 @@
     <p>Learn from the past, do it in the present and change the future.</p>
 </h2>
 
-<h1 style="color:#2196F3;">Game Project: <strong>Atemporal</strong></h1>
+<h1 style="color:#00BCD4;">Game Project: <strong>Atemporal</strong></h1>
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/Databasers/README-template?style=for-the-badge)
 ![GitHub language count](https://img.shields.io/github/languages/count/Databasers/README-template?style=for-the-badge)
-![Bitbucket open issues](https://img.shields.io/bitbucket/issues/iuricode/README-template?style=for-the-badge)
-![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/iuricode/README-template?style=for-the-badge)
+![Bitbucket open issues](https://img.shields.io/bitbucket/issues/Databasers/README-template?style=for-the-badge)
+![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/Databasers/README-template?style=for-the-badge)
 
 <p><strong>Language:</strong> <span style="color:#FF5722;">Java 21</span><br>
 <strong>Framework:</strong> <span style="color:#FF5722;">JavaFX</span><br>
 <strong>Agile Framework:</strong> <span style="color:#FF5722;">Scrum</span></p>
 
-<hr>
+<br>
 
-## Presentation
+## 🧭 Presentation
 
-<strong style="color:#00BCD4;">Atemporal</strong> is a game inspired by <strong style="color:#00BCD4;">Soul Knight</strong> and <strong style="color:#00BCD4;">Streets of Rage</strong>. This project is our journey into mastering Object-Oriented Programming (OOP) using the <strong style="color:#FF5722;">SCRUM</strong> methodology.
+<strong style="color:#00BCD4;">Atemporal</strong> is a 2D Beat 'em up style game inspired by Soul Knight and Streets of Rage. The goal of this project is to utilize the <strong style="color:#FF5722;">SCRUM</strong> methodology and deepen our knowledge of object-oriented programming (OOP).
 
-## Prologue
+## 📖 Prologue
 
-<p>In <strong style="color:#00BCD4;">Atemporal</strong>, players traverse through the <strong style="color:#FFEB3B;">Middle Ages</strong>, the <strong style="color:#FFEB3B;">Contemporary Era</strong>, and the futuristic world of <strong style="color:#FFEB3B;">2099</strong>. Choose between a <strong style="color:#FFEB3B;">Medieval Knight</strong>, a <strong style="color:#FFEB3B;">Special Forces Soldier</strong>, or a <strong style="color:#FFEB3B;">robot</strong> fighting for survival.</p>
+Players can have immersive experiences through temporal rifts, exploring different historical periods of humanity. In the Middle Ages, help Sir Dante eliminate skeletal threats and end the reign of the dark lord Malakar. End a world war in the Contemporary Era as a special forces soldier, or perhaps, in the chaotic future of 2099, help B.M.O. to stop Cybernet and bring an end to this <strong>ATEMPORAL</strong> chaos.
 
-## Gameplay
+## 🕹️ Gameplay
 
-<p><strong style="color:#00BCD4;">Atemporal</strong> is a 2D Beat 'em up game featuring unique character classes and epic battles with dynamic enemies.</p>
+In game, similar to Streets of Rage, enemies will appear from the right side of the screen. Players can move and attack them using the unique abilities of each class. Each distinct map features its own set of enemies and a unique boss at the end of each level, providing a challenging and engaging experience.
 
-## 🤝 Colaboradores
+## 💻 Technologies
 
-Agradecemos às seguintes pessoas que contribuíram para este projeto:
+<img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white">
+<img src="https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white">
+<img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white">
+<img src="https://img.shields.io/badge/Git-E34F26?style=for-the-badge&logo=git&logoColor=white">
+
+## 🤝 Collaborators
+
+The following people contributed to this project being carried out:
 
 <table>
   <tr>
@@ -68,5 +75,3 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
     </td>
   </tr>
 </table>
-
-<img src="https://img.shields.io/badge/Nintendo_3DS-D12228?style=for-the-badge&logo=nintendo-3ds&logoColor=white">
