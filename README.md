@@ -26,7 +26,7 @@
 
 ## 📖 Prologue
 
-Players can have immersive experiences through temporal rifts, exploring different historical periods of humanity. In the Middle Ages, help Sir Dante eliminate skeletal threats and end the reign of the dark lord Malakar. End a world war in the Contemporary Era as a special forces soldier, or perhaps, in the chaotic future of 2099, help B.M.O. to stop Cybernet and bring an end to this <strong>ATEMPORAL</strong> chaos.
+Players can have immersive experiences through temporal rifts, exploring different historical periods of humanity. In the Middle Ages, help Sir Dante eliminate skeletal threats and end the reign of the dark lord Malakar. End a world war in the Contemporary Era as a special forces soldier, or perhaps, in the chaotic future of 2099, help B.M.O. to stop Cybernet and bring an end to this <strong style="color:#00BCD4;">ATEMPORAL</strong> chaos.
 
 ## 🕹️ Gameplay
 
@@ -38,6 +38,12 @@ In game, similar to Streets of Rage, enemies will appear from the right side of 
 <img src="https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white">
 <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white">
 <img src="https://img.shields.io/badge/Git-E34F26?style=for-the-badge&logo=git&logoColor=white">
+
+## 💡 Concept
+
+**[Figma Prototype](https://www.figma.com/design/NGgqwBoLR8VmkY2Npwnrld/Prot%C3%B3tipo?node-id=0-1&t=d9A0FylNrJmmIOvL-1)**
+
+**[Game Concept in Figma](https://www.figma.com/board/ySHEMOjnEVKOhBahRAtJEl/Projeto-Jogo-em-Java?node-id=0-1&t=pyLgSd3ro10QEjmo-1)**
 
 ## 🤝 Collaborators
 
