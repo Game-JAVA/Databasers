@@ -1,118 +1,93 @@
 import javafx.animation.TranslateTransition;
 import javafx.application.Application;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class menu extends Application {
+import java.util.Objects;
 
-    private Stage primaryStage;
+// Classe Menu possui a primeira tela do jogo, aqui temos os botões 'Iniciar', 'Opções' e 'Sair', junto disso
+// cada botão possui um método atribuido
+public class Menu extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        this.primaryStage = primaryStage;
-        primaryStage.setTitle("Atemporal");
+        primaryStage.setTitle("Menu do Jogo");
 
-        // Logo de Atemporal
-        Image logo = new Image("file:Databasers/menuscreen/src/img/logo.png");
+        // Instância da imagem do logo
+        Image logo = new Image(Objects.requireNonNull(getClass().getResourceAsStream("res/logo.png")));
         ImageView logoView = new ImageView(logo);
-        logoView.setFitWidth(300); // Ajuste de largura da logo
-        logoView.setPreserveRatio(true); // Mantém a proporção da imagem
+
+        // Ajuste da dimensão da imagem
+        logoView.setFitWidth(300); //Ajuste de largura
+        logoView.setPreserveRatio(true); //Mantém a proporção da imagem
 
         // Configurar a animação de transição para movimentar o logo
-        TranslateTransition transition = new TranslateTransition(Duration.seconds(3), logoView);
+        TranslateTransition transition = new TranslateTransition(Duration.seconds(2), logoView);
+
         transition.setToY(-20); // Mover para cima 20 pixels
+
         transition.setCycleCount(TranslateTransition.INDEFINITE); // Repetir infinitamente
-        transition.setAutoReverse(true); // Alternar a direção
+        transition.setAutoReverse(true); // Alternar a direção da animação
 
         // Iniciar a animação
         transition.play();
 
-        // Botão Iniciar Jogo
+        // Instância do botão 'Iniciar Jogo'
         Button startButton = new Button("Iniciar Jogo");
-        startButton.getStyleClass().add("menu-button"); // Recebe a classe css do menu-button
-        startButton.setOnAction(e -> showCharacterSelection());
+        startButton.getStyleClass().add("menu-button"); //Importa a classe de estilo do arquivo css
 
-        // Botão Configurações
+        // Configura a ação que o botão vai realizar quando pressionado
+        startButton.setOnAction(e -> startGame(primaryStage));
+
+        // Instância do botão 'Opções'
         Button settingsButton = new Button("Opções");
         settingsButton.getStyleClass().add("menu-button");
         settingsButton.setOnAction(e -> openSettings());
 
-        // Botão Sair
+        // Instância do botão 'Sair'
         Button exitButton = new Button("Sair");
         exitButton.getStyleClass().add("menu-button");
         exitButton.setOnAction(e -> primaryStage.close());
 
-        // Layout do menu
+        // Ajuste de layout da tela de menu
         VBox menuLayout = new VBox(20);
-        menuLayout.getChildren().addAll(logoView, startButton, settingsButton, exitButton); // posição dos botões
-        menuLayout.setAlignment(Pos.CENTER);
-        menuLayout.getStyleClass().add("menu-layout"); // recebe o estilo css do menu-layout
 
-        // Cena principal
+        // Atribuindo os botões à Vbox
+        menuLayout.getChildren().addAll(logoView, startButton, settingsButton, exitButton);
+        menuLayout.getStyleClass().add("menu-layout"); //Recebe o estilo do arquivo css
+
+        // Instância da cena principal
         Scene mainScene = new Scene(menuLayout, 800, 600);
-        mainScene.getStylesheets().add("./CSS/style.css"); // arquivo css com as estilizações
+        // Atribuindo classes de estilo à cena principal
+        mainScene.getStylesheets().add("style.css");
+        // Atribuindo cena ao primaryStage
         primaryStage.setScene(mainScene);
         primaryStage.show();
     }
 
-    private void showCharacterSelection() {
-        // Knight
-        VBox knightBox = createCharacterBox("file:src/img/knight.png", "Knight");
-
-        // Soldier
-        VBox soldierBox = createCharacterBox("file:src/img/soldado.png", "Soldier");
-
-        // Robot
-        VBox robotBox = createCharacterBox("file:src/img/robot.png", "Robot");
-
-        // Layout de seleção de personagem (Knight, Soldier e Robot)
-        HBox characterSelectionLayout = new HBox(25);
-        characterSelectionLayout.getChildren().addAll(knightBox, soldierBox, robotBox);
-        characterSelectionLayout.setAlignment(Pos.CENTER);
-        characterSelectionLayout.getStyleClass().add("character-selection-layout");
-
-        // Cena de seleção de personagem
-        Scene selectCharacterScene = new Scene(characterSelectionLayout, 800, 600);
-        selectCharacterScene.getStylesheets().add("./CSS/styleSelect.css"); // Recebe o CSS para a cena de seleção
-
-        primaryStage.setScene(selectCharacterScene);
-    }
-
-    private VBox createCharacterBox(String imagePath, String characterName) {
-        Button characterButton = new Button(characterName);
-        characterButton.getStyleClass().add("character-button");
-        characterButton.setOnAction(e -> selectCharacter(characterName));
-
-        ImageView characterImageView = new ImageView(new Image(imagePath));
-        characterImageView.setFitHeight(200);
-        characterImageView.setPreserveRatio(true);
-
-        VBox characterBox = new VBox(10);
-        characterBox.setAlignment(Pos.CENTER);
-        characterBox.getChildren().addAll(characterButton, characterImageView);
-        characterBox.getStyleClass().add("character-box");
-
-        return characterBox;
-    }
-
-    private void selectCharacter(String characterName) {
-        System.out.println(characterName + " selected!");
-        // Código do Kauan jogabilidade:
-    }
-
-
     private void openSettings() {
-        System.out.println("Abrindo configurações");
+        //Aqui devemos implementar a próxima tela que deve ser chamada quando o botão
+        // de opções for pressionado
+        System.out.println("Tela de opções");
+    }
+
+    // Este método é responsável por conectar este 'Stage' ao 'Stage' da Classe Move que por sua vez é a classe que roda o jogo
+    private void startGame(Stage primaryStage) {
+//        // Acessar o método start() da Classe Move e faz com que o primaryStage seja chamado
+//        // assim que for obeservado a ação do botão 'Iniciar Jogo' for pressionado
+        Move move = new Move();
+        move.start(primaryStage);
+
+
     }
 
     public static void main(String[] args) {
         launch(args);
     }
+
 }
