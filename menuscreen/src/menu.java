@@ -20,7 +20,11 @@ public class menu extends Application {
         primaryStage.setTitle("Atemporal");
 
         // Logo de Atemporal
+<<<<<<< HEAD
         Image logo = new Image("file:Databasers/menuscreen/src/img/logo.png");
+=======
+        Image logo = new Image("file:src/img/logo.png");
+>>>>>>> 3eb029d80cc556dbddbfbfe4e1d6a05809d7e37a
         ImageView logoView = new ImageView(logo);
         logoView.setFitWidth(300); // Ajuste de largura da logo
         logoView.setPreserveRatio(true); // Mantém a proporção da imagem
