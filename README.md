@@ -252,5 +252,3 @@ As seguintes pessoas contribuíram para a realização deste projeto:
     </td>
   </tr>
 </table>
-
->>>>>>> 0ae9072a6a9163e2c403fad31c9ba671bfef70c4
