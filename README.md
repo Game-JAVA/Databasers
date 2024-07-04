@@ -10,7 +10,7 @@
 <br>
 
 <h1 align="center">
-  <img src="./menuscreen/src/img/logo.png" alt="Logo" width="50%">
+  <img src="./src/res/logo.png" alt="Logo" width="50%">
   <p>Learn from the past, do it in the present and change the future.</h3>
 </h1>
 
@@ -137,7 +137,7 @@ The following people contributed to this project being carried out:
 <br>
 
 <h1 align="center">
-  <img src="./menuscreen/src/img/logo.png" alt="Logo" width="50%">
+  <img src="./src/res/logo.png" alt="Logo" width="50%">
   <p>Aprenda com o passado, faça no presente e mude o futuro.</h3>
 </h1>
 
