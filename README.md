@@ -10,8 +10,8 @@
 <br>
 
 <h1 align="center">
-  <img src="./menuscreen/src/img/logo.png" alt="Logo" width="50%">
-  <p>Learn from the past, do it in the present, and change the future.</h3>
+  <img src="./src/res/logo.png" alt="Logo" width="50%">
+  <p>Learn from the past, do it in the present and change the future.</h3>
 </h1>
 
 <br>
@@ -19,8 +19,8 @@
 <h1 style="color:#00BCD4">Game Project: <strong>Atemporal</strong></h1>
 
 <p>
-  <p><strong>Language:</strong> <span style="color: #FF5722">Java 21</span><br>
-  <strong>Framework:</strong> <span style="color: #FF5722">JavaFX</span><br>
+  <p><strong>Language:</strong> <span style="color: #FF5722">Java 8 (Corretto 1.8)</span><br>
+  <strong>Framework:</strong> <span style="color: #FF5722">JavaFX and Java X</span><br>
   <strong>Agile Framework:</strong> <span style="color: #FF5722">Scrum</span></p>
 </p>
 
@@ -137,7 +137,7 @@ The following people contributed to this project being carried out:
 <br>
 
 <h1 align="center">
-  <img src="./menuscreen/src/img/logo.png" alt="Logo" width="50%">
+  <img src="./src/res/logo.png" alt="Logo" width="50%">
   <p>Aprenda com o passado, faça no presente e mude o futuro.</h3>
 </h1>
 
@@ -146,8 +146,8 @@ The following people contributed to this project being carried out:
 <h1 style="color:#00BCD4">Projeto de Jogo: <strong>Atemporal</strong></h1>
 
 <p>
-  <p><strong>Linguagem:</strong> <span style="color: #FF5722">Java 21</span><br>
-  <strong>Framework:</strong> <span style="color: #FF5722">JavaFX</span><br>
+  <p><strong>Linguagem:</strong> <span style="color: #FF5722">Java 8 (Corretto 1.8)</span><br>
+  <strong>Framework:</strong> <span style="color: #FF5722">JavaFX e Java X</span><br>
   <strong>Metodologia Ágil:</strong> <span style="color: #FF5722">Scrum</span></p>
 </p>
 
