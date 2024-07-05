@@ -11,7 +11,6 @@ import java.util.Map;
 
 public class SoundsFX {
 
-    private static final String caminho_malakar_intro = "malakar_intro.wav";
     private static final String caminho_clique = "Recursos_audio/click_sound.wav";
     private static final String caminho_musica_fundo = "Recursos_audio/timeless2.wav";
 
