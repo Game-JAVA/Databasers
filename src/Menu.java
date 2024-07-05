@@ -19,6 +19,7 @@ public class Menu extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+
         primaryStage.setTitle("Menu do Jogo");
 
         // Instância da imagem do logo
@@ -50,12 +51,18 @@ public class Menu extends Application {
         // Instância do botão 'Opções'
         Button settingsButton = new Button("Opções");
         settingsButton.getStyleClass().add("menu-button");
-        settingsButton.setOnAction(e -> openSettings());
+        settingsButton.setOnAction(e -> {
+            openSettings();
+            SoundsFX.playClique();
+        });
 
         // Instância do botão 'Sair'
         Button exitButton = new Button("Sair");
         exitButton.getStyleClass().add("menu-button");
-        exitButton.setOnAction(e -> primaryStage.close());
+        exitButton.setOnAction(e -> {
+            SoundsFX.playClique();
+            primaryStage.close();
+        });
 
         // Ajuste de layout da tela de menu
         VBox menuLayout = new VBox(20);
@@ -70,6 +77,7 @@ public class Menu extends Application {
         mainScene.getStylesheets().add("styleMain.css");
         // Atribuindo cena ao primaryStage
         primaryStage.setScene(mainScene);
+        SoundsFX.playBackgroundMusic();
         primaryStage.show();
     }
 

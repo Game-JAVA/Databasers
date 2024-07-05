@@ -157,7 +157,6 @@ public class GameLoop {
         }
         if (code == KeyCode.SPACE) {
             player.getAtk().play();
-            sound.play(); // efeito sonoro de ataque
         } else {
             player.getAtk().stop();
         }
