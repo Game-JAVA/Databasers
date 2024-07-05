@@ -44,12 +44,18 @@ public class PauseScreen extends Application {
         // Botão continuar
         Button continueButton = new Button("Continue");
         continueButton.getStyleClass().add("menu-button");
-        continueButton.setOnAction(e -> game_Loop(primaryStage));
+        continueButton.setOnAction(e -> {
+            game_Loop(primaryStage);
+            SoundsFX.playClique();
+        });
 
         // Botão BackToMenu
         Button menuButton = new Button("Menu");
         menuButton.getStyleClass().add("menu-button");
-        menuButton.setOnAction(e -> backMenu(primaryStage));
+        menuButton.setOnAction(e -> {
+            backMenu(primaryStage);
+            SoundsFX.playClique();
+        });
 
         // Organize components in a layout container
         VBox layout = new VBox(20); // VBox with 20px spacing

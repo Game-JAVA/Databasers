@@ -15,6 +15,7 @@ import java.util.Objects;
     cada botão possui um método atribuido que direciona para a tela de seleção de personagem.
 
  */
+
 public class Menu extends Application {
 
     @Override
@@ -46,13 +47,16 @@ public class Menu extends Application {
         startButton.getStyleClass().add("menu-button"); //Importa a classe de estilo do arquivo css
 
         // Configura a ação que o botão vai realizar quando pressionado
-        startButton.setOnAction(e -> startGame(primaryStage));
+        startButton.setOnAction(e -> {
+            startGame(primaryStage);
+            SoundsFX.playClique();
+        });
 
         // Instância do botão 'Opções'
         Button settingsButton = new Button("Opções");
         settingsButton.getStyleClass().add("menu-button");
         settingsButton.setOnAction(e -> {
-            openSettings();
+            openSettings(primaryStage);
             SoundsFX.playClique();
         });
 
@@ -72,7 +76,7 @@ public class Menu extends Application {
         menuLayout.getStyleClass().add("menu-layout"); //Recebe o estilo do arquivo css
 
         // Instância da cena principal
-        Scene mainScene = new Scene(menuLayout, 800, 600);
+        Scene mainScene = new Scene(menuLayout, 1000, 600);
         // Atribuindo classes de estilo à cena principal
         mainScene.getStylesheets().add("styleMain.css");
         // Atribuindo cena ao primaryStage
@@ -81,10 +85,12 @@ public class Menu extends Application {
         primaryStage.show();
     }
 
-    private void openSettings() {
+    private void openSettings(Stage primaryStage) {
         //Aqui devemos implementar a próxima tela que deve ser chamada quando o botão
         // de opções for pressionado
         System.out.println("Tela de opções");
+        ControlScreenButton CSB = new ControlScreenButton();
+        CSB.start(primaryStage);
     }
 
     // Este método é responsável por conectar este 'Stage' ao 'Stage' da Classe Move que por sua vez é a classe que roda o jogo

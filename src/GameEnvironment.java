@@ -52,6 +52,7 @@ public class GameEnvironment extends Application {
         primaryStage.setTitle("Atemporal");
         primaryStage.setScene(scene);
         primaryStage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("res/logo.png"))));
+        SoundsFX.stopBackgroundMusic();
         primaryStage.show();
 
         // Atribuir foco aos eventos do painel

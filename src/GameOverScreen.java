@@ -44,12 +44,18 @@ public class GameOverScreen extends Application {
         // Botão tentar novamente
         Button retryButton = new Button("Retry");
         retryButton.getStyleClass().add("menu-button"); // Recebe a classe css do PersonSelect-button
-        retryButton.setOnAction(e -> gameLoop(primaryStage));
+        retryButton.setOnAction(e -> {
+            gameLoop(primaryStage);
+            SoundsFX.playClique();
+        });
 
         // Botão BackToMenu
         Button menuButton = new Button("Menu");
         menuButton.getStyleClass().add("menu-button");
-        menuButton.setOnAction(e -> backToMenu(primaryStage));
+        menuButton.setOnAction(e -> {
+            backToMenu(primaryStage);
+            SoundsFX.playClique();
+        });
 
         // Organize components in a layout container
         VBox layout = new VBox(20); // VBox with 20px spacing
