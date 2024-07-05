@@ -59,6 +59,7 @@ public class GameLoop {
 
                             if (playerlife == 0){
                                 enemy.getskatkT().stop();
+                                SoundsFX.playHit();
                                 player.getDead().play();
                                 enemy.getskatkT().stop();
 //                                pane.getChildren().remove(player);
@@ -157,6 +158,7 @@ public class GameLoop {
         }
         if (code == KeyCode.SPACE) {
             player.getAtk().play();
+            SoundsFX.playAtk();
         } else {
             player.getAtk().stop();
         }
