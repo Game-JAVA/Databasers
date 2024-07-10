@@ -12,7 +12,7 @@ public class SoundsFX {
     private static final String caminho_hit = "Recursos_audio/manHit.wav";
     private static final String caminho_atk = "Recursos_audio/atk_sound.wav";
     private static final String caminho_themesong = "Recursos_audio/theme_song.wav";
-
+    private static final String caminho_impact_player = "Recursos_audio/impact_sound.wav";
 
     private static final Map<String, Clip> audioClips = new HashMap<>();
 
@@ -23,6 +23,7 @@ public class SoundsFX {
         audioClips.put(caminho_som_corrida, loadAudio(caminho_som_corrida));
         audioClips.put(caminho_hit, loadAudio(caminho_hit));
         audioClips.put(caminho_atk, loadAudio(caminho_atk));
+        audioClips.put(caminho_impact_player, loadAudio(caminho_impact_player));
     }
 
     private static Clip loadAudio(String path) {
@@ -63,6 +64,8 @@ public class SoundsFX {
         }
     }
 
+    // Sons de Cavaleiro
+
     public static void playRunSound() {
         Clip clip = audioClips.get(caminho_som_corrida);
         Clip atk = audioClips.get(caminho_atk);
@@ -76,6 +79,22 @@ public class SoundsFX {
             System.err.println("Audio clip not found: " + caminho_som_corrida);
         }
     }
+
+    // Cavaleiro (Player) recebe uma colisão do inimigo
+
+    public static void playCollision() {
+        Clip clip = audioClips.get(caminho_impact_player);
+        if (clip != null) {
+            if (!clip.isRunning()) {
+                clip.setFramePosition(0); // Volta ao início
+                clip.start();
+            }
+        } else {
+            System.err.println("Audio clip not found: " + caminho_impact_player);
+        }
+    }
+
+    // Som de morte do player
 
     public static void playHit() {
         Clip clip = audioClips.get(caminho_hit);
@@ -102,6 +121,8 @@ public class SoundsFX {
             System.err.println("Audio clip not found: " + caminho_atk);
         }
     }
+
+    // Fim dos sons do Cavaleiro
 
     public static void playBackgroundMusic() {
         Clip clip = audioClips.get(caminho_musica_fundo);

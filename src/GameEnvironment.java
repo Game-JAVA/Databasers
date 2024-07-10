@@ -11,6 +11,7 @@ import java.util.Objects;
     nas devidas posições.
 
  */
+
 public class GameEnvironment extends Application {
 
     private static final int WIDTH = 1000;
@@ -30,7 +31,7 @@ public class GameEnvironment extends Application {
         pane.getChildren().add(player.getImageView());
 
         // Posicionamento dos obstáculos do mapa em uma camada acima a do player
-        obstacles = new MapObstacles[4];
+        obstacles = new MapObstacles[5];
         // Imagem da pedra em uma camada acima do player
         obstacles[0] = new MapObstacles(216,416,0);
         // Árvore
@@ -39,6 +40,10 @@ public class GameEnvironment extends Application {
         obstacles[2] = new MapObstacles(105,246,2);
         // Coluna
         obstacles[3] = new MapObstacles(483,520,3);
+
+        obstacles[4] = new MapObstacles(0,0,4);
+
+        obstacles[4].setWidth(1000, 600);
 
         for (int i = 0; i < obstacles.length; i++) {
             pane.getChildren().add(obstacles[i].getMap_obj(i));

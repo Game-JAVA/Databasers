@@ -21,7 +21,7 @@ public class MapObstacles extends ImageView {
 
     private void load_map_images(){
         //Obstáculos
-        map_obj = new ImageView[4];
+        map_obj = new ImageView[5];
         //Pedra
         map_obj[0] = new ImageView("res/map_res/maprock.png");
         //Árvore
@@ -31,6 +31,7 @@ public class MapObstacles extends ImageView {
         //Coluna
         map_obj[3] = new ImageView("res/map_res/mapcolum.png");
 
+        map_obj[4] = new ImageView("res/map_res/layer_main.png");
     }
 
     public double gettX(int n){
@@ -57,8 +58,15 @@ public class MapObstacles extends ImageView {
         return map_obj[n];
     }
 
+    public void setWidth(double width, double height){
+
+        map_obj[4].setFitWidth(width);
+        map_obj[4].setFitHeight(height);
+
+    }
 
     public void setMap_obj(ImageView[] map_obj) {
         this.map_obj = map_obj;
     }
 }
+

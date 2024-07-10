@@ -141,6 +141,7 @@ public class Enemy extends ImageView {
         if(getX() == (player.getImageView().getX() + player.getWidth())){
             runR.stop();
             runL.stop();
+            SoundsFX.playCollision();
             return true;
         }
         return false;
