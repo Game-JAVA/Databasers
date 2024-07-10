@@ -27,7 +27,7 @@ public class GameOverScreen extends Application {
         primaryStage.setTitle("Atemporal");
 
         // Logo de Atemporal
-        Image gameover = new Image(Objects.requireNonNull(getClass().getResourceAsStream("res/gameover.gif")));
+        Image gameover = new Image(Objects.requireNonNull(getClass().getResourceAsStream("res/screens/gameover.gif")));
         ImageView gameOver = new ImageView(gameover);
         gameOver.setFitWidth(350); // Ajuste de largura da logo
         gameOver.setPreserveRatio(true); // Mantém a proporção da imagem

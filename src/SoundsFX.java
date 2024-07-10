@@ -63,9 +63,11 @@ public class SoundsFX {
 
     public static void playRunSound() {
         Clip clip = audioClips.get(caminho_som_corrida);
+        Clip atk = audioClips.get(caminho_atk);
         if (clip != null) {
             if (!clip.isRunning()) {
                 clip.setFramePosition(0); // Volta ao início
+                atk.stop();
                 clip.start();
             }
         } else {
@@ -87,9 +89,11 @@ public class SoundsFX {
 
     public static void playAtk() {
         Clip clip = audioClips.get(caminho_atk);
+        Clip run = audioClips.get(caminho_som_corrida);
         if (clip != null) {
             if (!clip.isRunning()) {
                 clip.setFramePosition(0); // Volta ao início
+                run.stop();
                 clip.start();
             }
         } else {

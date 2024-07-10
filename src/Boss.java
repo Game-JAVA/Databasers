@@ -11,89 +11,121 @@ import javafx.util.Duration;
 
 public class Boss extends Enemy{
     private double life;
-//    private Image[] bossgif_normalmode;
-    private Image[] boss_atk_ragemode;
-    private Image[] boss_idle_ragemode;
-    private Timeline atkrage;
-    private Timeline idlerage;
+    private double damage;
+    private double speed = 1;
+    private Image[] boss_idle_rage_r;
+    private Image[] boss_idle_rage_l;
+    private Image[] boss_atk_rage_r;
+    private Image[] boss_atk_rage_l;
+    private Image boss_idle_l;
+    private Image boss_atk_l;
+    private Timeline atkrageL;
+    private Timeline atkrageR;
+    private Timeline idlerageL;
+    private Timeline idlerageR;
     private int indexAtk = 0;
     private int indexIdle = 0;
     public Boss(double x, double y) {
         super(x, y);
-        loadimages();
-        setupAnimations();
+        boss_idle_l = new Image("res/boss_res/boss_idle.gif");
+        setImage(boss_idle_l);
+        include_boss_image();
+        include_boss_animations();
     }
 
-    private void loadimages(){
-//        bossgif_normalmode = new Image[3];
-//        bossgif_normalmode[0] = new Image("res/bossidle.gif"); //idle
-//        bossgif_normalmode[1] = new Image("res/bossatk.gif"); // atk
-//        bossgif_normalmode[2] = new Image("res/bossbreath.gif"); // rage transition
-        boss_idle_ragemode = new Image[6];
-        for (int i = 0; i < 6; i++) {
-            boss_idle_ragemode[i] = new Image("res/boss_idle" + i + ".png");
+    private void include_boss_image(){
+          boss_idle_rage_l = new Image[6];
+          boss_idle_rage_r = new Image[6];
+          boss_atk_rage_l = new Image[11];
+          boss_atk_rage_r = new Image[11];
+          boss_atk_l = new Image("res/boss_res/boss_atk.gif");
+        for (int i = 0; i < boss_atk_rage_l.length; i++) {
+            boss_atk_rage_l[i] = new Image("res/boss_res/boss_atk_rage_l" + i + ".png");
+            boss_atk_rage_r[i] = new Image("res/boss_res/boss_atk_rage_r" + i + ".png");
         }
-        boss_atk_ragemode = new Image[11];
-        for (int i = 0; i < 11; i++) {
-            boss_atk_ragemode[i] = new Image("res/atk_rage" + i + ".png");
+        for (int i = 0; i < boss_idle_rage_l.length; i++) {
+            boss_idle_rage_l[i] = new Image("res/boss_res/boss_idle_rage_l" + i + ".png");
+            boss_idle_rage_r[i] = new Image("res/boss_res/boss_idle_rage_r" + i + ".png");
         }
     }
 
-    private void setupAnimations(){
-        atkrage = new Timeline(new KeyFrame(Duration.millis(100), e -> {
-            indexAtk = (indexAtk + 1) % boss_atk_ragemode.length;
-            setImage(boss_atk_ragemode[indexAtk]);
+    private void include_boss_animations(){
+        // movimentação no modo raiva
+        idlerageL = new Timeline(new KeyFrame(Duration.millis(100), e -> {
+            indexIdle = (indexIdle + 1) % boss_idle_rage_l.length;
+            setImage(boss_idle_rage_l[indexIdle]);
         }));
-        atkrage.setCycleCount(Timeline.INDEFINITE);
+        idlerageL.setCycleCount(Timeline.INDEFINITE);
+        idlerageR = new Timeline(new KeyFrame(Duration.millis(100), e -> {
+            indexIdle = (indexIdle + 1) % boss_idle_rage_r.length;
+            setImage(boss_idle_rage_r[indexIdle]);
+        }));
+        idlerageR.setCycleCount(Timeline.INDEFINITE);
 
-        idlerage = new Timeline(new KeyFrame(Duration.millis(100), e -> {
-            indexIdle = (indexIdle + 1) % boss_idle_ragemode.length;
-            setImage(boss_idle_ragemode[indexIdle]);
+        // ataque no modo raiva
+        atkrageL = new Timeline(new KeyFrame(Duration.millis(200), e -> {
+            indexAtk = (indexAtk + 1) % boss_atk_rage_l.length;
+            setImage(boss_atk_rage_l[indexAtk]);
         }));
-        idlerage.setCycleCount(Timeline.INDEFINITE);
+        atkrageL.setCycleCount(boss_atk_rage_l.length);
+        atkrageR = new Timeline(new KeyFrame(Duration.millis(200), e -> {
+            indexAtk = (indexAtk + 1) % boss_atk_rage_r.length;
+            setImage(boss_atk_rage_r[indexAtk]);
+        }));
+        atkrageR.setCycleCount(boss_atk_rage_r.length);
+    }
+
+    public void run(Player player) {
+        movement(player);
+        if (boss_ready_to_atk(player)) {
+            atkL();
+        }
     }
 
     public boolean boss_ready_to_atk(Player player){
         return getX() < player.getImageView().getX() + player.getWidth();
     }
 
-    public void bossatk(){
-//        setImage(bossgif_normalmode[1]); //normal mode boss
-        idlerage.stop();
-        atkrage.play(); // rage mode boss
+    public void atkL(){
+        setImage(boss_atk_l);
+    }
+
+    public void atk_rageL(){
+        atkrageL.play();
+    }
+    public void atk_rageR(){
+        atkrageR.play();
+    }
+    public void idle_rageL(){
+        idlerageL.play();
+    }
+    public void idle_rageR(){
+        idlerageR.play();
     }
 
     public void movement(Player player){
-//        setImage(bossgif_normalmode[0]);
-        // Posição do player
-        double playerX = player.getImageView().getX() + player.getWidth(); //este é o p1
+        // Posição do Player
+        double playerX = player.getImageView().getX() + player.getWidth(); //este é o p1 - 'atemporal_document'
 //        double playerX_new = player.getImageView().getX(); //este é o p0
         double playerY = player.getImageView().getY();
 
-        // Distância entre o inimigo e o player
+        // Distância entre o Boss e o player
         double deltaX = playerX - getX();
         double deltaY = playerY - getY();
 
-        // Verificar a maior distância entre o Player e o inimigo
+        // Verificar a maior distância entre o Player e o Boss
         if (Math.abs(deltaX) > Math.abs(deltaY)) {
+            setImage(boss_idle_l);
             if (deltaX > 0) {
-                setX(getX() + 1); // movimenta o inimigo
-                idlerage.play();
-//                atkrage.play();
+                setX(getX() + speed);
             } else {
-                setX(getX() - 1);
-                idlerage.play();
-//                atkrage.play();
+                setX(getX() - speed);
             }
         } else {
             if (deltaY > 0) {
-                setY(getY() + 1);
-                idlerage.play();
-//                atkrage.play();
+                setY(getY() + speed);
             } else {
-                setY(getY() - 1);
-                idlerage.play();
-//                atkrage.play();
+                setY(getY() - speed);
             }
         }
     }
@@ -102,11 +134,15 @@ public class Boss extends Enemy{
         return life;
     }
 
+    public double getSpeed(){
+        return speed;
+    }
+
     public Timeline getAtkrage() {
-        return atkrage;
+        return atkrageL;
     }
 
     public Timeline getIdlerage() {
-        return idlerage;
+        return idlerageL;
     }
 }

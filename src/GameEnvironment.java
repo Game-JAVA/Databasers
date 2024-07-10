@@ -16,6 +16,7 @@ public class GameEnvironment extends Application {
     private static final int WIDTH = 1000;
     private static final int HEIGHT = 600;
     MapObstacles[] obstacles;
+    Hud[] hud;
 
     @Override
     public void start(Stage primaryStage) {
@@ -39,9 +40,19 @@ public class GameEnvironment extends Application {
         // Coluna
         obstacles[3] = new MapObstacles(483,520,3);
 
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < obstacles.length; i++) {
             pane.getChildren().add(obstacles[i].getMap_obj(i));
             obstacles[i].toFront();
+        }
+
+        // Posicionamento do HUD na tela
+        hud = new Hud[1];
+        // Player HUD
+        hud[0] = new Hud(0,0);
+
+        for (int i = 0; i < hud.length; i++) {
+            pane.getChildren().add(hud[i].getPlayer_life(0));
+            hud[i].toFront();
         }
 
         // Instância da classe GameLoop para acessar o método start()
@@ -51,7 +62,7 @@ public class GameEnvironment extends Application {
         // Configuração da tela 'primaryStage'
         primaryStage.setTitle("Atemporal");
         primaryStage.setScene(scene);
-        primaryStage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("res/logo.png"))));
+        primaryStage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("res/screens/logo.png"))));
         SoundsFX.stopBackgroundMusic();
         primaryStage.show();
 

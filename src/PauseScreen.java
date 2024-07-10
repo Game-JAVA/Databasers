@@ -27,7 +27,7 @@ public class PauseScreen extends Application {
         primaryStage.setTitle("Atemporal");
 
         // Logo de Atemporal
-        Image gamepause = new Image(Objects.requireNonNull(getClass().getResourceAsStream("res/gamepause.gif")));
+        Image gamepause = new Image(Objects.requireNonNull(getClass().getResourceAsStream("res/screens/gamepause.gif")));
         ImageView gamePause = new ImageView(gamepause);
         gamePause.setFitWidth(300); // Ajuste de largura da logo
         gamePause.setPreserveRatio(true); // Mantém a proporção da imagem

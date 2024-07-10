@@ -19,14 +19,14 @@ import javafx.stage.Stage;
  de controles básicos de movimentação e ataque do player
 
  */
-public class ControlScreenButton extends Application {
+public class OptionScreen extends Application {
 
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Control Screen");
 
         // Carregar a imagem
-        Image image = new Image("res/controlscreen.png");
+        Image image = new Image("res/screens/screen_controls_tips.png");
         ImageView imageView = new ImageView(image);
 
         // Instância do botão 'Sair'
@@ -76,8 +76,8 @@ public class ControlScreenButton extends Application {
 
     private void backToMenu(Stage primaryStage) {
         System.out.println("Voltando para o menu principal!");
-        Menu gameMenu = new Menu();
-        gameMenu.start(primaryStage);
+        GameInit gameI = new GameInit();
+        gameI.start(primaryStage);
     }
 
     public static void main(String[] args) {

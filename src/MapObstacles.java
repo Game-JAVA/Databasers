@@ -9,7 +9,6 @@ import javafx.scene.image.ImageView;
 public class MapObstacles extends ImageView {
     private ImageView[] map_obj;
 
-
     public MapObstacles(double x, double y, int n) {
         load_map_images();
         map_obj[n].setX(x);
@@ -24,13 +23,13 @@ public class MapObstacles extends ImageView {
         //Obstáculos
         map_obj = new ImageView[4];
         //Pedra
-        map_obj[0] = new ImageView("res/maprock.png");
+        map_obj[0] = new ImageView("res/map_res/maprock.png");
         //Árvore
-        map_obj[1] = new ImageView("res/maptree.png");
+        map_obj[1] = new ImageView("res/map_res/maptree.png");
         //Altar
-        map_obj[2] = new ImageView("res/mapalt.png");
+        map_obj[2] = new ImageView("res/map_res/mapalt.png");
         //Coluna
-        map_obj[3] = new ImageView("res/mapcolum.png");
+        map_obj[3] = new ImageView("res/map_res/mapcolum.png");
 
     }
 

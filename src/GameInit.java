@@ -5,8 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -19,10 +18,15 @@ import java.util.Objects;
 
  */
 public class GameInit extends Application {
-
     private Stage primaryStage;
     private static final double WIDTH = 1000;
     private static final double HEIGHT = 600;
+    private Image characters = new Image("res/screens/screen_player_selection.png");
+    private BackgroundImage charactersbackground = new BackgroundImage( characters,BackgroundRepeat.NO_REPEAT,
+            BackgroundRepeat.NO_REPEAT,
+            BackgroundPosition.CENTER,
+            BackgroundSize.DEFAULT);
+    private Button[] selectCharacters;
 
     @Override
     public void start(Stage primaryStage) {
@@ -30,7 +34,7 @@ public class GameInit extends Application {
         primaryStage.setTitle("Atemporal");
 
         // Logo de Atemporal
-        Image logo = new Image(Objects.requireNonNull(getClass().getResourceAsStream("res/logo.png")));
+        Image logo = new Image(Objects.requireNonNull(getClass().getResourceAsStream("res/screens/logo.png")));
         ImageView logoView = new ImageView(logo);
         logoView.setFitWidth(300); // Ajuste de largura da logo
         logoView.setPreserveRatio(true); // Mantém a proporção da imagem
@@ -72,46 +76,75 @@ public class GameInit extends Application {
         mainScene.getStylesheets().add("styleMain.css"); // arquivo css com as estilizações
         primaryStage.setScene(mainScene);
         primaryStage.show();
+        SoundsFX.playBackgroundMusic();
     }
 
     private void showCharacterSelection() {
-        // Knight
-        VBox knightBox = createCharacterBox("res/idle.png", "Knight");
-
-        // Soldier
-        VBox soldierBox = createCharacterBox("res/soldado.png", "Soldier");
-
-        // Robot
-        VBox robotBox = createCharacterBox("res/robot.png", "Robot");
+//        // Knight
+//        VBox knightBox = createCharacterBox("res/knight_res/kn_idle_r.png", "Knight");
+//
+//        // Soldier
+//        VBox soldierBox = createCharacterBox("res/screens/soldier.png", "Soldier");
+//
+//        // Robot
+//        VBox robotBox = createCharacterBox("res/screens/robot.png", "Robot");
 
         // Layout de seleção de personagem (Knight, Soldier e Robot)
-        HBox characterSelectionLayout = new HBox(25);
-        characterSelectionLayout.getChildren().addAll(knightBox, soldierBox, robotBox);
-        characterSelectionLayout.setAlignment(Pos.CENTER);
-        characterSelectionLayout.getStyleClass().add("character-selection-layout");
-        characterSelectionLayout.setStyle("-fx-background-color: black;"); // Define fundo preto
+        Pane characterSelectionLayout = new Pane();
+        characterSelectionLayout.setBackground(new Background(charactersbackground));
+        characterSelectionLayout.setMaxWidth(1000);
+        characterSelectionLayout.setMaxHeight(600);
 
         // Cena de seleção de personagem
         Scene selectCharacterScene = new Scene(characterSelectionLayout, WIDTH, HEIGHT);
         selectCharacterScene.getStylesheets().add("stylePersonSelect.css"); // Recebe o CSS para a cena de seleção
         primaryStage.setScene(selectCharacterScene);
+
+        // Configurando botões de seleção de personagem
+        selectCharacters = new Button[3];
+        selectCharacters[0] = new Button("Knight");
+        selectCharacters[0].getStyleClass().add("character-button");
+        selectCharacters[0].setOnAction(e -> selectCharacter("Knight"));
+        selectCharacters[0].setLayoutX(100);
+        selectCharacters[0].setLayoutY(85);
+
+        selectCharacters[1] = new Button("Soldier");
+        selectCharacters[1].getStyleClass().add("character-button");
+        selectCharacters[1].setOnAction(e -> selectCharacter("Soldier"));
+        selectCharacters[1].setLayoutX(450);
+        selectCharacters[1].setLayoutY(85);
+
+        selectCharacters[2] = new Button("Robot");
+        selectCharacters[2].getStyleClass().add("character-button");
+        selectCharacters[2].setOnAction(e -> selectCharacter("Robot"));
+        selectCharacters[2].setLayoutX(830);
+        selectCharacters[2].setLayoutY(85);
+        for (Button selectCharacter : selectCharacters) {
+            characterSelectionLayout.getChildren().add(selectCharacter);
+        }
+
+//        characterSelectionLayout.getChildren().addAll(knightBox, soldierBox, robotBox);
+//        characterSelectionLayout.setAlignment(Pos.CENTER);
+//        characterSelectionLayout.getStyleClass().add("character-selection-layout");
+//        characterSelectionLayout.setStyle("-fx-background-color: black;"); // Define fundo preto
+
     }
 
-    private VBox createCharacterBox(String imagePath, String characterName) {
-        Button characterButton = new Button(characterName);
-        characterButton.getStyleClass().add("character-button");
-        characterButton.setOnAction(e -> selectCharacter(characterName));
-
-        ImageView characterImageView = new ImageView(new Image(imagePath));
-        characterImageView.setFitHeight(200);
-        characterImageView.setPreserveRatio(true);
-
-        VBox characterBox = new VBox(10);
-        characterBox.setAlignment(Pos.CENTER);
-        characterBox.getChildren().addAll(characterButton, characterImageView);
-        characterBox.getStyleClass().add("character-box");
-        return characterBox;
-    }
+//    private VBox createCharacterBox(String imagePath, String characterName) {
+//        Button characterButton = new Button(characterName);
+//        characterButton.getStyleClass().add("character-button");
+//        characterButton.setOnAction(e -> selectCharacter(characterName));
+//
+//        ImageView characterImageView = new ImageView(new Image(imagePath));
+//        characterImageView.setFitHeight(200);
+//        characterImageView.setPreserveRatio(true);
+//
+//        VBox characterBox = new VBox(10);
+//        characterBox.setAlignment(Pos.CENTER);
+//        characterBox.getChildren().addAll(characterButton, characterImageView);
+//        characterBox.getStyleClass().add("character-box");
+//        return characterBox;
+//    }
 
     private void selectCharacter(String characterName) {
         System.out.println(characterName + " selected!");
@@ -119,9 +152,9 @@ public class GameInit extends Application {
         controlScreen.start(primaryStage);
     }
 
-
     private void openSettings() {
-        System.out.println("Abrindo configurações");
+        OptionScreen optionScreen = new OptionScreen();
+        optionScreen.start(primaryStage);
     }
 
     public static void main(String[] args) {

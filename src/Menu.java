@@ -24,7 +24,7 @@ public class Menu extends Application {
         primaryStage.setTitle("Menu do Jogo");
 
         // Instância da imagem do logo
-        Image logo = new Image(Objects.requireNonNull(getClass().getResourceAsStream("res/logo.png")));
+        Image logo = new Image(Objects.requireNonNull(getClass().getResourceAsStream("res/screens/logo.png")));
         ImageView logoView = new ImageView(logo);
 
         // Ajuste da dimensão da imagem
@@ -89,8 +89,8 @@ public class Menu extends Application {
         //Aqui devemos implementar a próxima tela que deve ser chamada quando o botão
         // de opções for pressionado
         System.out.println("Tela de opções");
-        ControlScreenButton CSB = new ControlScreenButton();
-        CSB.start(primaryStage);
+        OptionScreen optionScreen = new OptionScreen();
+        optionScreen.start(primaryStage);
     }
 
     // Este método é responsável por conectar este 'Stage' ao 'Stage' da Classe Move que por sua vez é a classe que roda o jogo
