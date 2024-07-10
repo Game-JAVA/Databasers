@@ -50,7 +50,7 @@ public class GameLoop {
                     for (Enemy enemy : enemies) {
                         if (enemy != null && enemy.isVisible()) {
                             enemy.followPlayer(player);
-                            hud[0].update_enemy_hud_position(0,enemy.getX()+enemy.getFitWidth()/4,enemy.getY()-26);
+                            hud[0].update_enemy_hud_position(0,enemy.getX()+enemy.getFitWidth()/4,enemy.getY()-50);
                             if (enemy.enemy_collision_hit(player)) {
                                 enemy.getAtkL().play();
                                 playerlife--;
