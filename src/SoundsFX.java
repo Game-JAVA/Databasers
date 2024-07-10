@@ -11,6 +11,7 @@ public class SoundsFX {
     private static final String caminho_som_corrida = "Recursos_audio/running.wav";
     private static final String caminho_hit = "Recursos_audio/manHit.wav";
     private static final String caminho_atk = "Recursos_audio/atk_sound.wav";
+    private static final String caminho_themesong = "Recursos_audio/theme_song.wav";
 
 
     private static final Map<String, Clip> audioClips = new HashMap<>();
@@ -18,6 +19,7 @@ public class SoundsFX {
     static {
         audioClips.put(caminho_clique, loadAudio(caminho_clique));
         audioClips.put(caminho_musica_fundo, loadAudio(caminho_musica_fundo));
+        audioClips.put(caminho_themesong, loadAudio(caminho_themesong));
         audioClips.put(caminho_som_corrida, loadAudio(caminho_som_corrida));
         audioClips.put(caminho_hit, loadAudio(caminho_hit));
         audioClips.put(caminho_atk, loadAudio(caminho_atk));
@@ -121,6 +123,38 @@ public class SoundsFX {
             clip.stop(); // Para o clip se estiver tocando
         } else {
             System.err.println("Audio clip not found or not playing: " + caminho_musica_fundo);
+        }
+    }
+
+    public static void playThemesong(float volume) {
+        Clip clip = audioClips.get(caminho_themesong);
+        if (clip != null) {
+            if (clip.isRunning()) {
+                clip.stop(); // Stop the clip if it's running
+            }
+            clip.setFramePosition(0); // Reset to the beginning
+            clip.loop(Clip.LOOP_CONTINUOUSLY); // Set to loop
+            clip.start();
+
+            // Set the volume
+            try {
+                FloatControl volumeControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+                float dB = (float) (Math.log(volume) / Math.log(10.0) * 20.0);
+                volumeControl.setValue(dB);
+            } catch (Exception e) {
+                System.err.println("Volume control not supported: " + e.getMessage());
+            }
+        } else {
+            System.err.println("Audio clip not found: " + caminho_themesong);
+        }
+    }
+
+    public static void stopThemesong() {
+        Clip clip = audioClips.get(caminho_themesong);
+        if (clip != null && clip.isRunning()) {
+            clip.stop(); // Para o clip se estiver tocando
+        } else {
+            System.err.println("Audio clip not found or not playing: " + caminho_themesong);
         }
     }
 
