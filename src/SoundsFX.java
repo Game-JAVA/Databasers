@@ -13,6 +13,9 @@ public class SoundsFX {
     private static final String caminho_atk = "Recursos_audio/atk_sound.wav";
     private static final String caminho_themesong = "Recursos_audio/theme_song.wav";
     private static final String caminho_impact_player = "Recursos_audio/impact_sound.wav";
+    private static final String caminho_impact_enemy = "Recursos_audio/enemy_hit_sound.wav";
+    private static final String caminho_enemy_dead = "Recursos_audio/enemy_dead_sound.wav";
+
 
     private static final Map<String, Clip> audioClips = new HashMap<>();
 
@@ -24,6 +27,8 @@ public class SoundsFX {
         audioClips.put(caminho_hit, loadAudio(caminho_hit));
         audioClips.put(caminho_atk, loadAudio(caminho_atk));
         audioClips.put(caminho_impact_player, loadAudio(caminho_impact_player));
+        audioClips.put(caminho_impact_enemy, loadAudio(caminho_impact_enemy));
+        audioClips.put(caminho_enemy_dead, loadAudio(caminho_enemy_dead));
     }
 
     private static Clip loadAudio(String path) {
@@ -84,7 +89,6 @@ public class SoundsFX {
             } catch (Exception e) {
                 System.err.println("Volume control not supported: " + e.getMessage());
             }
-
         } else {
             System.err.println("Audio clip not found: " + caminho_som_corrida);
         }
@@ -133,6 +137,34 @@ public class SoundsFX {
     }
 
     // Fim dos sons do Cavaleiro
+
+    // Som do esqueletos
+
+    public static void playEnemyhit() {
+        Clip clip = audioClips.get(caminho_impact_enemy);
+        if (clip != null) {
+            if (!clip.isRunning()) {
+                clip.setFramePosition(0); // Volta ao início
+                clip.start();
+            }
+        } else {
+            System.err.println("Audio clip not found: " + caminho_impact_enemy);
+        }
+    }
+
+    public static void playEnemyDead() {
+        Clip clip = audioClips.get(caminho_enemy_dead);
+        if (clip != null) {
+            if (!clip.isRunning()) {
+                clip.setFramePosition(0); // Volta ao início
+                clip.start();
+            }
+        } else {
+            System.err.println("Audio clip not found: " + caminho_enemy_dead);
+        }
+    }
+
+
 
     public static void playBackgroundMusic() {
         Clip clip = audioClips.get(caminho_musica_fundo);
