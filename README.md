@@ -37,6 +37,8 @@
         <sub>
           <b>Soul Knight</b>
         </sub>
+        <br>
+        <sub>Android / iOS</sub>
       </a>
     </td>
     <td align="center">
@@ -44,6 +46,8 @@
         <sub>
           <b>Streets of Rage 4</b>
         </sub>
+        <br>
+        <sub>PC / PS4 / Xbox One / Mobile</sub>
       </a>
     </td>
   <tr>
@@ -64,6 +68,8 @@ In game, similar to **Streets of Rage**, enemies will appear from the right side
         <sub>
           <b>Teenage Mutant Ninja Turtles: Shredder's Revenge</b>
         </sub>
+        <br>
+        <sub>(2022)</sub>
       </a>
     </td>
     <td align="center">
@@ -71,6 +77,8 @@ In game, similar to **Streets of Rage**, enemies will appear from the right side
         <sub>
           <b>Streets of Rage 4</b>
         </sub>
+        <br>
+        <sub>(2020)</sub>
       </a>
     </td>
   <tr>
@@ -324,9 +332,9 @@ The following people contributed to this project being carried out:
         <sub>
           <b>Kauan</b>
         </sub>
+        </a>
         <br>
         <sub>Development and Game Designer</sub>
-      </a>
     </td>
     <td align="center">
       <a href="https://github.com/gmgpx" title="Github">
@@ -334,9 +342,9 @@ The following people contributed to this project being carried out:
         <sub>
           <b>Gustavo</b>
         </sub>
+        </a>
         <br>
         <sub>Development and UI/UX Designer</sub>
-      </a>
     </td>
     <td align="center">
       <a href="https://github.com/05samuk" title="Github">
@@ -344,9 +352,9 @@ The following people contributed to this project being carried out:
         <sub>
           <b>Samuel</b>
         </sub>
+        </a>
         <br>
         <sub>Development and Sound Engineer</sub>
-      </a>
     </td>
     <td align="center">
       <a href="https://github.com/JJuanPablo" title="Github">
@@ -354,9 +362,9 @@ The following people contributed to this project being carried out:
         <sub>
           <b>Juan</b>
         </sub>
+        </a>
         <br>
         <sub>Development and Character Designer</sub>
-      </a>
     </td>
   </tr>
 </table>
@@ -688,9 +696,9 @@ As seguintes pessoas contribuíram para a realização deste projeto:
         <sub>
           <b>Kauan</b>
         </sub>
+      </a>
         <br>
         <sub>Desenvolvedor e Game Designer</sub>
-      </a>
     </td>
     <td align="center">
       <a href="https://github.com/gmgpx" title="Github">
@@ -698,9 +706,9 @@ As seguintes pessoas contribuíram para a realização deste projeto:
         <sub>
           <b>Gustavo</b>
         </sub>
+      </a>
         <br>
         <sub>Desenvolvedor e UI/UX Designer</sub>
-      </a>
     </td>
     <td align="center">
       <a href="https://github.com/05samuk" title="Github">
@@ -708,9 +716,9 @@ As seguintes pessoas contribuíram para a realização deste projeto:
         <sub>
           <b>Samuel</b>
         </sub>
+      </a>
         <br>
         <sub>Desenvolvedor e Engenheiro de Som</sub>
-      </a>
     </td>
     <td align="center">
       <a href="https://github.com/JJuanPablo" title="Github">
@@ -718,9 +726,9 @@ As seguintes pessoas contribuíram para a realização deste projeto:
         <sub>
           <b>Juan</b>
         </sub>
+      </a>
         <br>
         <sub>Desenvolvedor e Designer de Personagem</sub>
-      </a>
     </td>
   </tr>
 </table>
