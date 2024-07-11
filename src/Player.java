@@ -258,28 +258,28 @@ public class Player extends ImageView {
     public void moveLeft() {
         imageView.setX(imageView.getX() - speed);
 //        System.out.println("P0(x) position: " + imageView.getX());
-        SoundsFX.playRunSound();
+        SoundsFX.playRunSound(0.50f);
 //        runL.play();
     }
 
     public void moveRight() {
         imageView.setX(imageView.getX() + speed);
 //        System.out.println("P0(x) position: " + imageView.getX());
-        SoundsFX.playRunSound();
+        SoundsFX.playRunSound(0.50f);
 //        runR.play();
     }
 
     public void moveUp() {
         imageView.setY(imageView.getY() - speed);
 //        System.out.println("P0(y) position: " + imageView.getY());
-        SoundsFX.playRunSound();
+        SoundsFX.playRunSound(0.50f);
 //        runR.play();
     }
 
     public void moveDown() {
         imageView.setY(imageView.getY() + speed);
 //        System.out.println("P0(y) position: " + imageView.getY());
-        SoundsFX.playRunSound();
+        SoundsFX.playRunSound(0.50f);
 //        runR.play();
     }
 

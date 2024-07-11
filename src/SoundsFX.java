@@ -66,7 +66,7 @@ public class SoundsFX {
 
     // Sons de Cavaleiro
 
-    public static void playRunSound() {
+    public static void playRunSound(float volume) {
         Clip clip = audioClips.get(caminho_som_corrida);
         Clip atk = audioClips.get(caminho_atk);
         if (clip != null) {
@@ -75,6 +75,16 @@ public class SoundsFX {
                 atk.stop();
                 clip.start();
             }
+
+            // Set the volume
+            try {
+                FloatControl volumeControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+                float dB = (float) (Math.log(volume) / Math.log(10.0) * 20.0);
+                volumeControl.setValue(dB);
+            } catch (Exception e) {
+                System.err.println("Volume control not supported: " + e.getMessage());
+            }
+
         } else {
             System.err.println("Audio clip not found: " + caminho_som_corrida);
         }
