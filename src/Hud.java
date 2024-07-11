@@ -15,9 +15,10 @@ public class Hud extends ImageView {
 
     private void include_hud_images(){
         player_life = new ImageView[3];
-        enemy_life = new ImageView[2];
+        enemy_life = new ImageView[1];
         boss_life = new ImageView[6];
         boss_dead = new ImageView("res/hud_res/boss_dead.png");
+
         for (int i = 0; i < player_life.length; i++) {
             player_life[i] = new ImageView("res/hud_res/player_heart" + i + ".png");
             // Hud do player
@@ -28,6 +29,7 @@ public class Hud extends ImageView {
             boss_life[i] = new ImageView("res/hud_res/boss_heart" + i + ".png");
         }
         enemy_life[0] = new ImageView("res/hud_res/enemy_heart.png");
+        //enemy_life[1] = new ImageView("res/hud_res/enemy_heart2.png");
         // Hud do player
         enemy_life[0].setFitWidth(50);
         enemy_life[0].setFitHeight(70);
