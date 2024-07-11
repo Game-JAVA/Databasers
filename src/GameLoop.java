@@ -52,11 +52,11 @@ public class GameLoop {
                             enemy.followPlayer(player);
                             hud[0].update_enemy_hud_position(0,enemy.getX()+enemy.getFitWidth()/4,enemy.getY()-50);
                             if (enemy.enemy_collision_hit(player)) {
-//                                enemy.getAtkL().play();
+                                enemy.getAtkL().play();
                                 playerlife--;
                                 System.out.println("Player hp: " + playerlife);
                             } else if(enemy.enemy_collision_hit(player)){
-
+                                enemy.getAtkL().play();
                             }else{
                                 enemy.getAtkL().stop();
                             }

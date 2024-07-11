@@ -58,7 +58,9 @@ public class Boss extends Enemy{
         for (int i = 0; i < boss_idle_l.length; i++) {
             boss_idle_l[i] = new Image("res/boss_res/normal_boss/boss" + i + ".png");
         }
-        //new coment
+        for (int i = 0; i < boss_atk_l.length; i++) {
+            boss_atk_l[i] = new Image("res/boss_res/normal_boss/boss_atk" + i + ".png");
+        }
     }
 
     private void include_boss_animations(){
@@ -92,12 +94,20 @@ public class Boss extends Enemy{
             setImage(boss_idle_l[indexIdle]);
         }));
         idleL.setCycleCount(Timeline.INDEFINITE);
+
+        // ataque modo normal
+        atkL = new Timeline(new KeyFrame(Duration.millis(100), e -> {
+            indexAtk = (indexAtk + 1) % boss_atk_l.length;
+            setImage(boss_atk_l[indexAtk]);
+        }));
+        atkL.setCycleCount(boss_atk_l.length);
     }
 
     public void run(Player player) {
         movement(player);
         if (boss_ready_to_atk(player)) {
             atkL();
+            idleL.stop();
         }
     }
 
@@ -105,8 +115,9 @@ public class Boss extends Enemy{
         return getX() < player.getImageView().getX() + player.getWidth();
     }
 
-    public void atkL(){}
-
+    public void atkL(){
+        atkL.play();
+    }
     public void atk_rageL(){
         atkrageL.play();
     }
@@ -133,6 +144,7 @@ public class Boss extends Enemy{
         // Verificar a maior distância entre o Player e o Boss
         if (Math.abs(deltaX) > Math.abs(deltaY)) {
             idleL.play();
+            atkL.stop();
             if (deltaX > 0) {
                 setX(getX() + speed);
             } else {
