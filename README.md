@@ -324,6 +324,8 @@ The following people contributed to this project being carried out:
         <sub>
           <b>Kauan</b>
         </sub>
+        <br>
+        <sub>Development and Game Designer</sub>
       </a>
     </td>
     <td align="center">
@@ -332,6 +334,8 @@ The following people contributed to this project being carried out:
         <sub>
           <b>Gustavo</b>
         </sub>
+        <br>
+        <sub>Development and UI/UX Designer</sub>
       </a>
     </td>
     <td align="center">
@@ -340,6 +344,8 @@ The following people contributed to this project being carried out:
         <sub>
           <b>Samuel</b>
         </sub>
+        <br>
+        <sub>Development and Sound Engineer</sub>
       </a>
     </td>
     <td align="center">
@@ -348,6 +354,8 @@ The following people contributed to this project being carried out:
         <sub>
           <b>Juan</b>
         </sub>
+        <br>
+        <sub>Development and Character Designer</sub>
       </a>
     </td>
   </tr>
@@ -378,7 +386,7 @@ The following people contributed to this project being carried out:
 
 ## 🧭 Apresentação
 
-<strong style="color:#00BCD4;">Atemporal</strong> é um jogo estilo Beat 'em up 2D inspirado em **Soul Knight** e **Streets of Rage**. O objetivo deste projeto é utilizar a metodologia<strong style="color:#FF5722;"> SCRUM</strong> e aprofundar nossos conhecimentos em programação orientada a objetos (POO).
+<strong style="color:#00BCD4;">Atemporal</strong> é um jogo estilo *Beat 'em up* 2D inspirado em **Soul Knight** e **Streets of Rage**. O objetivo deste projeto é utilizar a metodologia<strong style="color:#FF5722;"> SCRUM</strong> e aprofundar nossos conhecimentos em programação orientada a objetos (POO).
 
 <table>
   <tr>
@@ -387,11 +395,17 @@ The following people contributed to this project being carried out:
         <sub>
           <b>Soul Knight</b>
         </sub>
+        <br>
+        <sub>Android / iOS</sub>
     </td>
     <td align="center">
         <img src="https://i.pcmag.com/imagery/reviews/04yBjuouR6KO1HhPPkUmoNr-1..v1587475684.jpg" width="400px;" alt="Foto do Streets of Rage 4"/><br>
         <sub>
           <b>Streets of Rage 4</b>
+        </sub>
+        <br>
+        <sub>
+        PC / PS4 / Xbox One / Mobile
         </sub>
     </td>
   </tr>
@@ -412,12 +426,16 @@ No jogo, semelhante a **Streets of Rage**, os inimigos aparecerão do lado direi
         <sub>
           <b>Teenage Mutant Ninja Turtles: Shredder's Revenge</b>
         </sub>
+        <br>
+        <sub>(2022)</sub>
     </td>
     <td align="center">
         <img src="https://s3.amazonaws.com/prod-media.gameinformer.com/styles/thumbnail/s3/2020/04/24/f5df1d61/03_0.jpg" width="400px;" alt="Foto do Streets of Rage 4"/><br>
         <sub>
           <b>Streets of Rage 4</b>
         </sub>
+        <br>
+        <sub>(2020)</sub>
     </td>
   </tr>
 </table>
@@ -670,6 +688,8 @@ As seguintes pessoas contribuíram para a realização deste projeto:
         <sub>
           <b>Kauan</b>
         </sub>
+        <br>
+        <sub>Desenvolvedor e Game Designer</sub>
       </a>
     </td>
     <td align="center">
@@ -678,6 +698,8 @@ As seguintes pessoas contribuíram para a realização deste projeto:
         <sub>
           <b>Gustavo</b>
         </sub>
+        <br>
+        <sub>Desenvolvedor e UI/UX Designer</sub>
       </a>
     </td>
     <td align="center">
@@ -686,6 +708,8 @@ As seguintes pessoas contribuíram para a realização deste projeto:
         <sub>
           <b>Samuel</b>
         </sub>
+        <br>
+        <sub>Desenvolvedor e Engenheiro de Som</sub>
       </a>
     </td>
     <td align="center">
@@ -694,6 +718,8 @@ As seguintes pessoas contribuíram para a realização deste projeto:
         <sub>
           <b>Juan</b>
         </sub>
+        <br>
+        <sub>Desenvolvedor e Designer de Personagem</sub>
       </a>
     </td>
   </tr>
