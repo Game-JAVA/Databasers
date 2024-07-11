@@ -107,6 +107,7 @@ public class GameLoop {
             pane.getChildren().remove(enemies[index]);
             hud[0].set_hud_visible(false);
             enemies[index] = null;
+            SoundsFX.playEnemyDead();
             System.out.println("Inimigo eliminado e removido do pane.");
         }
     }
@@ -212,6 +213,7 @@ public class GameLoop {
                         hud[0].set_hud_visible(true);
                         System.out.println("hit");
                         enemylife--;
+                        SoundsFX.playEnemyhit();
                         if (enemylife == 0) {
                             kill_enemy(i);
                             kill++;
