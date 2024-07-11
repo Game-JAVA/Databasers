@@ -17,18 +17,22 @@ public class Boss extends Enemy{
     private Image[] boss_idle_rage_l;
     private Image[] boss_atk_rage_r;
     private Image[] boss_atk_rage_l;
-    private Image boss_idle_l;
-    private Image boss_atk_l;
+    private Image[] boss_idle_l;
+    private Image[] boss_idle_r;
+    private Image[] boss_atk_l;
+    private Image[] boss_atk_r;
     private Timeline atkrageL;
     private Timeline atkrageR;
     private Timeline idlerageL;
     private Timeline idlerageR;
+    private Timeline idleL;
+    private Timeline idleR;
+    private Timeline atkL;
+    private Timeline atkR;
     private int indexAtk = 0;
     private int indexIdle = 0;
     public Boss(double x, double y) {
         super(x, y);
-        boss_idle_l = new Image("res/boss_res/boss_idle.gif");
-        setImage(boss_idle_l);
         include_boss_image();
         include_boss_animations();
     }
@@ -38,14 +42,21 @@ public class Boss extends Enemy{
           boss_idle_rage_r = new Image[6];
           boss_atk_rage_l = new Image[11];
           boss_atk_rage_r = new Image[11];
-          boss_atk_l = new Image("res/boss_res/boss_atk.gif");
+          boss_idle_r = new Image[6];
+          boss_idle_l = new Image[6];
+          boss_atk_l = new Image[10];
+          boss_atk_r = new Image[10];
         for (int i = 0; i < boss_atk_rage_l.length; i++) {
-            boss_atk_rage_l[i] = new Image("res/boss_res/boss_atk_rage_l" + i + ".png");
-            boss_atk_rage_r[i] = new Image("res/boss_res/boss_atk_rage_r" + i + ".png");
+            boss_atk_rage_l[i] = new Image("res/boss_res/rage_boss/boss_atk_rage_l" + i + ".png");
+            boss_atk_rage_r[i] = new Image("res/boss_res/rage_boss/boss_atk_rage_r" + i + ".png");
         }
         for (int i = 0; i < boss_idle_rage_l.length; i++) {
-            boss_idle_rage_l[i] = new Image("res/boss_res/boss_idle_rage_l" + i + ".png");
-            boss_idle_rage_r[i] = new Image("res/boss_res/boss_idle_rage_r" + i + ".png");
+            boss_idle_rage_l[i] = new Image("res/boss_res/rage_boss/boss_idle_rage_l" + i + ".png");
+            boss_idle_rage_r[i] = new Image("res/boss_res/rage_boss/boss_idle_rage_r" + i + ".png");
+//            boss_idle_r[i] = new Image("res/boss_res/normal_boss/"+ i + ".png");
+        }
+        for (int i = 0; i < boss_idle_l.length; i++) {
+            boss_idle_l[i] = new Image("res/boss_res/normal_boss/boss" + i + ".png");
         }
     }
 
@@ -73,6 +84,13 @@ public class Boss extends Enemy{
             setImage(boss_atk_rage_r[indexAtk]);
         }));
         atkrageR.setCycleCount(boss_atk_rage_r.length);
+
+        // movimentação no modo normal
+        idleL = new Timeline(new KeyFrame(Duration.millis(100), e -> {
+            indexIdle = (indexIdle + 1) % boss_idle_l.length;
+            setImage(boss_idle_l[indexIdle]);
+        }));
+        idleL.setCycleCount(Timeline.INDEFINITE);
     }
 
     public void run(Player player) {
@@ -86,9 +104,7 @@ public class Boss extends Enemy{
         return getX() < player.getImageView().getX() + player.getWidth();
     }
 
-    public void atkL(){
-        setImage(boss_atk_l);
-    }
+    public void atkL(){}
 
     public void atk_rageL(){
         atkrageL.play();
@@ -115,7 +131,7 @@ public class Boss extends Enemy{
 
         // Verificar a maior distância entre o Player e o Boss
         if (Math.abs(deltaX) > Math.abs(deltaY)) {
-            setImage(boss_idle_l);
+            idleL.play();
             if (deltaX > 0) {
                 setX(getX() + speed);
             } else {

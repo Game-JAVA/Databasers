@@ -52,10 +52,12 @@ public class GameLoop {
                             enemy.followPlayer(player);
                             hud[0].update_enemy_hud_position(0,enemy.getX()+enemy.getFitWidth()/4,enemy.getY()-50);
                             if (enemy.enemy_collision_hit(player)) {
-                                enemy.getAtkL().play();
+//                                enemy.getAtkL().play();
                                 playerlife--;
                                 System.out.println("Player hp: " + playerlife);
-                            } else {
+                            } else if(enemy.enemy_collision_hit(player)){
+
+                            }else{
                                 enemy.getAtkL().stop();
                             }
                             if (playerlife == 0){
@@ -88,6 +90,7 @@ public class GameLoop {
         hud[0].set_hud_visible(false);
         if (kill < 3) {
             // inimigos podem aparecer em locais aleatórios do mapa
+            //!!AJUSTAR NOVOS LIMITES
             // Xr.nextInt(gameE.getSceneWidth()) = [0,1000[
             // Yr.nextInt(gameE.getSceneHeight()) = [0,600[
             enemies[kill] = new Enemy(Xr.nextInt(gameE.getSceneWidth()) + 50, Yr.nextInt(gameE.getSceneHeight()) + 50);

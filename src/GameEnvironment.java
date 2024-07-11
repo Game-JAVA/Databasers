@@ -40,10 +40,12 @@ public class GameEnvironment extends Application {
         obstacles[2] = new MapObstacles(105,246,2);
         // Coluna
         obstacles[3] = new MapObstacles(483,520,3);
+        
 
         obstacles[4] = new MapObstacles(0,0,4);
 
         obstacles[4].setWidth(1000, 600);
+
 
         for (int i = 0; i < obstacles.length; i++) {
             pane.getChildren().add(obstacles[i].getMap_obj(i));
