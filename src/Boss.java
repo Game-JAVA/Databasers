@@ -58,7 +58,7 @@ public class Boss extends Enemy{
         for (int i = 0; i < boss_idle_l.length; i++) {
             boss_idle_l[i] = new Image("res/boss_res/normal_boss/boss" + i + ".png");
         }
-        //new comen
+        //new coment
     }
 
     private void include_boss_animations(){
