@@ -23,7 +23,7 @@ public class ControlScreen extends Application {
         primaryStage.setTitle("Control Screen");
 
         // Carregar a imagem
-        Image image = new Image("res/controlscreen.png");
+        Image image = new Image("res/screens/screen_controls_tips.png");
         ImageView imageView = new ImageView(image);
 
         // Configurar o layout
@@ -38,6 +38,7 @@ public class ControlScreen extends Application {
         scene.setFill(Color.BLACK);
         primaryStage.setScene(scene);
         primaryStage.show();
+        SoundsFX.playBackgroundMusic();
 
         // método que faz a chamada da próxima tela
         setupKeyHandlers(scene, primaryStage);
@@ -47,7 +48,7 @@ public class ControlScreen extends Application {
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
-                if (event.getCode() == KeyCode.SPACE) {
+                if (event.getCode() == KeyCode.ENTER) {
                     // Tecla espaço é a condição para troca a tela
                     LoadingScreen loadingScreen = new LoadingScreen();
                     loadingScreen.start(primaryStage);

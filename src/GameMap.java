@@ -14,7 +14,7 @@ public class GameMap {
     private ImageView backgroundImageView;
 
     public GameMap(double width, double height) {
-        Image mapa = new Image(Objects.requireNonNull(getClass().getResourceAsStream("res/map.jpg")));
+        Image mapa = new Image(Objects.requireNonNull(getClass().getResourceAsStream("res/map_res/map.jpg")));
         backgroundImageView = new ImageView(mapa);
         backgroundImageView.setFitHeight(height);
         backgroundImageView.setFitWidth(width);

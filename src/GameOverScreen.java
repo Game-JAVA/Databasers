@@ -27,7 +27,7 @@ public class GameOverScreen extends Application {
         primaryStage.setTitle("Atemporal");
 
         // Logo de Atemporal
-        Image gameover = new Image(Objects.requireNonNull(getClass().getResourceAsStream("res/gameover.gif")));
+        Image gameover = new Image(Objects.requireNonNull(getClass().getResourceAsStream("res/screens/gameover.gif")));
         ImageView gameOver = new ImageView(gameover);
         gameOver.setFitWidth(350); // Ajuste de largura da logo
         gameOver.setPreserveRatio(true); // Mantém a proporção da imagem
@@ -44,12 +44,18 @@ public class GameOverScreen extends Application {
         // Botão tentar novamente
         Button retryButton = new Button("Retry");
         retryButton.getStyleClass().add("menu-button"); // Recebe a classe css do PersonSelect-button
-        retryButton.setOnAction(e -> gameLoop(primaryStage));
+        retryButton.setOnAction(e -> {
+            gameLoop(primaryStage);
+            SoundsFX.playClique();
+        });
 
         // Botão BackToMenu
         Button menuButton = new Button("Menu");
         menuButton.getStyleClass().add("menu-button");
-        menuButton.setOnAction(e -> backToMenu(primaryStage));
+        menuButton.setOnAction(e -> {
+            backToMenu(primaryStage);
+            SoundsFX.playClique();
+        });
 
         // Organize components in a layout container
         VBox layout = new VBox(20); // VBox with 20px spacing

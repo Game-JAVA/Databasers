@@ -15,14 +15,16 @@ import java.util.Objects;
     cada botão possui um método atribuido que direciona para a tela de seleção de personagem.
 
  */
+
 public class Menu extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+
         primaryStage.setTitle("Menu do Jogo");
 
         // Instância da imagem do logo
-        Image logo = new Image(Objects.requireNonNull(getClass().getResourceAsStream("res/logo.png")));
+        Image logo = new Image(Objects.requireNonNull(getClass().getResourceAsStream("res/screens/logo.png")));
         ImageView logoView = new ImageView(logo);
 
         // Ajuste da dimensão da imagem
@@ -45,17 +47,26 @@ public class Menu extends Application {
         startButton.getStyleClass().add("menu-button"); //Importa a classe de estilo do arquivo css
 
         // Configura a ação que o botão vai realizar quando pressionado
-        startButton.setOnAction(e -> startGame(primaryStage));
+        startButton.setOnAction(e -> {
+            startGame(primaryStage);
+            SoundsFX.playClique();
+        });
 
         // Instância do botão 'Opções'
         Button settingsButton = new Button("Opções");
         settingsButton.getStyleClass().add("menu-button");
-        settingsButton.setOnAction(e -> openSettings());
+        settingsButton.setOnAction(e -> {
+            openSettings(primaryStage);
+            SoundsFX.playClique();
+        });
 
         // Instância do botão 'Sair'
         Button exitButton = new Button("Sair");
         exitButton.getStyleClass().add("menu-button");
-        exitButton.setOnAction(e -> primaryStage.close());
+        exitButton.setOnAction(e -> {
+            SoundsFX.playClique();
+            primaryStage.close();
+        });
 
         // Ajuste de layout da tela de menu
         VBox menuLayout = new VBox(20);
@@ -65,18 +76,21 @@ public class Menu extends Application {
         menuLayout.getStyleClass().add("menu-layout"); //Recebe o estilo do arquivo css
 
         // Instância da cena principal
-        Scene mainScene = new Scene(menuLayout, 800, 600);
+        Scene mainScene = new Scene(menuLayout, 1000, 600);
         // Atribuindo classes de estilo à cena principal
         mainScene.getStylesheets().add("styleMain.css");
         // Atribuindo cena ao primaryStage
         primaryStage.setScene(mainScene);
+        SoundsFX.playBackgroundMusic();
         primaryStage.show();
     }
 
-    private void openSettings() {
+    private void openSettings(Stage primaryStage) {
         //Aqui devemos implementar a próxima tela que deve ser chamada quando o botão
         // de opções for pressionado
         System.out.println("Tela de opções");
+        OptionScreen optionScreen = new OptionScreen();
+        optionScreen.start(primaryStage);
     }
 
     // Este método é responsável por conectar este 'Stage' ao 'Stage' da Classe Move que por sua vez é a classe que roda o jogo

@@ -19,7 +19,7 @@ public class LoadingScreen extends Application {
     private Image portalImage;
 
     public LoadingScreen() {
-            portalImage = new Image("res/loadingscreen.png");
+            portalImage = new Image("res/screens/screen_loading.png");
     }
 
     @Override
@@ -37,6 +37,7 @@ public class LoadingScreen extends Application {
         primaryStage.setTitle("Atemporal");
         primaryStage.setScene(scene);
         primaryStage.show();
+        SoundsFX.playBackgroundMusic();
         setupKeyHandlers(scene,primaryStage);
     }
 
@@ -44,7 +45,7 @@ public class LoadingScreen extends Application {
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
-                if (event.getCode() == KeyCode.SPACE) {
+                if (event.getCode() == KeyCode.ENTER) {
                     // Tecla espaço é a condição para troca a tela
                    GameEnvironment gameE = new GameEnvironment();
                    gameE.start(primaryStage);

@@ -27,7 +27,7 @@ public class PauseScreen extends Application {
         primaryStage.setTitle("Atemporal");
 
         // Logo de Atemporal
-        Image gamepause = new Image(Objects.requireNonNull(getClass().getResourceAsStream("res/gamepause.gif")));
+        Image gamepause = new Image(Objects.requireNonNull(getClass().getResourceAsStream("res/screens/gamepause.gif")));
         ImageView gamePause = new ImageView(gamepause);
         gamePause.setFitWidth(300); // Ajuste de largura da logo
         gamePause.setPreserveRatio(true); // Mantém a proporção da imagem
@@ -44,12 +44,18 @@ public class PauseScreen extends Application {
         // Botão continuar
         Button continueButton = new Button("Continue");
         continueButton.getStyleClass().add("menu-button");
-        continueButton.setOnAction(e -> game_Loop(primaryStage));
+        continueButton.setOnAction(e -> {
+            game_Loop(primaryStage);
+            SoundsFX.playClique();
+        });
 
         // Botão BackToMenu
         Button menuButton = new Button("Menu");
         menuButton.getStyleClass().add("menu-button");
-        menuButton.setOnAction(e -> backMenu(primaryStage));
+        menuButton.setOnAction(e -> {
+            backMenu(primaryStage);
+            SoundsFX.playClique();
+        });
 
         // Organize components in a layout container
         VBox layout = new VBox(20); // VBox with 20px spacing
