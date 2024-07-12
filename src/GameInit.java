@@ -76,6 +76,7 @@ public class GameInit extends Application {
         mainScene.getStylesheets().add("styleMain.css"); // arquivo css com as estilizações
         primaryStage.setScene(mainScene);
         primaryStage.show();
+        SoundsFX.stopThemesong();
         SoundsFX.playBackgroundMusic();
     }
 

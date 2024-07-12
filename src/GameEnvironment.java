@@ -23,6 +23,8 @@ public class GameEnvironment extends Application {
     public void start(Stage primaryStage) {
         Pane pane = new Pane();
         Scene scene = new Scene(pane, WIDTH, HEIGHT);
+        // Call playThemesong with a desired volume level (e.g., 0.75 for 75% volume)
+        SoundsFX.playThemesong(0.15f);
 
         // Instância do mapa e do player
         GameMap gameMap = new GameMap(WIDTH, HEIGHT);
@@ -71,8 +73,6 @@ public class GameEnvironment extends Application {
         primaryStage.setScene(scene);
         primaryStage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("res/screens/logo.png"))));
         SoundsFX.stopBackgroundMusic();
-        // Call playThemesong with a desired volume level (e.g., 0.75 for 75% volume)
-        SoundsFX.playThemesong(0.15f);
         primaryStage.show();
 
         // Atribuir foco aos eventos do painel
