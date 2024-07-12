@@ -65,7 +65,7 @@ public class OptionScreen extends Application {
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
-                if (event.getCode() == KeyCode.SPACE) {
+                if (event.getCode() == KeyCode.ENTER) {
                     // Tecla espaço é a condição para troca a tela
                     LoadingScreen loadingScreen = new LoadingScreen();
                     loadingScreen.start(primaryStage);

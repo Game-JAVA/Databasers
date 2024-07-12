@@ -45,7 +45,7 @@ public class LoadingScreen extends Application {
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
-                if (event.getCode() == KeyCode.SPACE) {
+                if (event.getCode() == KeyCode.ENTER) {
                     // Tecla espaço é a condição para troca a tela
                    GameEnvironment gameE = new GameEnvironment();
                    gameE.start(primaryStage);

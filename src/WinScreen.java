@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -25,6 +26,7 @@ public class WinScreen extends Application {
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Atemporal");
+        KeyCode code = null;
 
         // Logo de Atemporal
         Image gamepause = new Image(Objects.requireNonNull(getClass().getResourceAsStream("res/screens/win.gif")));
@@ -45,7 +47,7 @@ public class WinScreen extends Application {
         Button continueButton = new Button("Continue");
         continueButton.getStyleClass().add("menu-button");
         continueButton.setOnAction(e -> {
-            game_Loop(primaryStage);
+            game_Loop(primaryStage,code);
             SoundsFX.playClique();
         });
 
@@ -70,10 +72,12 @@ public class WinScreen extends Application {
         primaryStage.show();
     }
 
-    private void game_Loop(Stage primaryStage) {
+    private void game_Loop(Stage primaryStage, KeyCode code) {
         System.out.println("Continuando a fase...");
-        GameEnvironment gameE = new GameEnvironment();
-        gameE.start(primaryStage);
+        if(code == KeyCode.ENTER){
+            GameEnvironment gameE = new GameEnvironment();
+            gameE.start(primaryStage);   
+        }
     }
 
     private void backMenu(Stage primaryStage) {

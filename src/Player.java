@@ -133,6 +133,7 @@ public class Player extends ImageView {
         obstacles[3] = new MapObstacles(483,520,3);
     }
 
+
     // Verificações para q0,q1,q2:
 
     // Verificação para q0 - pedra
@@ -235,6 +236,14 @@ public class Player extends ImageView {
                 imageView.getY() < 375;
     }
 
+//    // Verificar colisão com o boss
+//    public boolean player_collision_boss(Boss boss){
+//        return imageView.getX() + PLAYER_WIDTH > boss.getX() &&
+//                imageView.getX() + PLAYER_WIDTH < boss.getX() + boss.getFitWidth() &&
+//                imageView.getY() > boss.getY() &&
+//                imageView.getY() < boss.getY() + boss.getFitHeight();
+//    }
+
     // Colisão com limites do mapa
 
     public boolean player_collisionXleft(){
@@ -251,7 +260,10 @@ public class Player extends ImageView {
     }
 
     public boolean player_enemy_collision(Enemy enemy){
-        return imageView.getX() + PLAYER_WIDTH == enemy.getX();
+        return imageView.getX() + PLAYER_WIDTH >= enemy.getX();
+    }
+    public boolean player_boss_collision(Boss boss){
+        return imageView.getX() + PLAYER_WIDTH >= boss.getX();
     }
 
     // Métodos para movimentação do player baseado na atualização da posição atual + velocidade

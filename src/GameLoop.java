@@ -1,3 +1,4 @@
+
 import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
@@ -27,9 +28,11 @@ public class GameLoop {
     private Random Yr  = new Random();
     private boolean flag_enemy = true;
     private boolean flag_spawn = true;
+    private boolean boss_rage_mode = false;
     private int flag_cycle = 0;
     private char direction_player;
-    private int enemylife = 5;
+    private int enemylife = 4;
+    private int bosslife = 6;
     private int playerlife = 250;
     private int kill = 0;
 
@@ -44,29 +47,38 @@ public class GameLoop {
     // Método responsável por atualizar os eventos do jogo continuamente
     private void setupRefresh(Stage primaryStage) {
         animationTimer = new AnimationTimer() {
+            private long hit_player = 0; // salvar o tempo quando houver colisão
+            private long boss_hit_player = 0; // salvar o tempo quando houver colisão com o Boss
+
             @Override
             public void handle(long now) {
                 if (flag_enemy && kill < 3) {
                     for (Enemy enemy : enemies) {
                         if (enemy != null && enemy.isVisible()) {
                             enemy.followPlayer(player);
-                            hud[0].update_enemy_hud_position(0,enemy.getX()+enemy.getFitWidth()/4,enemy.getY()-50);
+                            hud[0].update_enemy_hud_position(0, enemy.getX() + enemy.getFitWidth() / 4, enemy.getY() - 50);
+                            hud[1].update_enemy_hud_position(1, enemy.getX() + enemy.getFitWidth() / 4, enemy.getY() - 50);
+
+                            // Garanta que o HUD não esteja visível ao iniciar
+                            hud[0].set_hud_visible(true);
+                            hud[1].set_hud_visible(false);
+
                             if (enemy.enemy_collision_hit(player)) {
-                                enemy.getAtkL().play();
-                                playerlife--;
-                                System.out.println("Player hp: " + playerlife);
-                            } else if(enemy.enemy_collision_hit(player)){
-                                enemy.getAtkL().play();
-                            }else{
+                                if (now - hit_player >= 3_000_000_000L) {
+                                    playerlife--;
+                                    hit_player = now; // Atualiza o tempo da última colisão
+                                    System.out.println("Player hp: " + playerlife);
+                                }
+                            } else {
                                 enemy.getAtkL().stop();
+                                enemy.getAtkR().stop();
                             }
-                            if (playerlife == 0){
+
+                            if (playerlife == 0) {
                                 enemy.getAtkL().stop();
+                                enemy.getAtkR().stop();
                                 SoundsFX.playHit();
                                 player.getDead().play();
-                                enemy.getAtkL().stop();
-//                                pane.getChildren().remove(player);
-//                                player.getImageView().setVisible(false);
                                 System.out.println("Game Over");
                                 kill = 0;
                                 GameOverScreen gameover = new GameOverScreen();
@@ -76,25 +88,42 @@ public class GameLoop {
                         }
                     }
                 }
-                if(boss != null){
-                    boss.run(player);
+                if (boss != null && boss.isVisible()) {
+                    if(boss_rage_mode){
+                        boss.run_rage(player);
+                    }else{
+                        boss.run(player);
+                    }
+                    if(now - boss_hit_player >= 3_000_000_000L && !boss_rage_mode){
+                        boss.getAtkL().play();
+                        boss_hit_player = now;
+                    }
+                    if(now - boss_hit_player >= 3_000_000_000L && boss_rage_mode){
+                        boss.getAtkrage().play();
+                        boss_hit_player = now;
+                    }
                 }
             }
         };
     }
 
+
     // Método usado para instânciar inimigos na tela
     private void spawnEnemy() {
-        hud = new Hud[1];
+        hud = new Hud[3];
         hud[0] = new Hud(0,0);
+        hud[1] = new Hud(0,0);
         hud[0].set_hud_visible(false);
+        hud[1].set_hud_visible(false);
         if (kill < 3) {
             // inimigos podem aparecer em locais aleatórios do mapa
-            //!!AJUSTAR NOVOS LIMITES
             // Xr.nextInt(gameE.getSceneWidth()) = [0,1000[
             // Yr.nextInt(gameE.getSceneHeight()) = [0,600[
-            enemies[kill] = new Enemy(Xr.nextInt(gameE.getSceneWidth()) + 50, Yr.nextInt(gameE.getSceneHeight()) + 50);
+            enemies[kill] = new Enemy(Xr.nextInt(gameE.getSceneWidth()) - 100, Yr.nextInt(gameE.getSceneHeight()) - 100);
             pane.getChildren().add(hud[0].getEnemy_life(0,enemies[kill].getX(),enemies[kill].getY()));
+            pane.getChildren().add(hud[1].getEnemy_life(1,enemies[kill].getX(),enemies[kill].getY()));
+            hud[0].set_hud_visible(false);
+            hud[1].set_hud_visible(false);
             pane.getChildren().add(enemies[kill]);
         }
     }
@@ -106,15 +135,23 @@ public class GameLoop {
             enemies[index].getDeadL().play();
             pane.getChildren().remove(enemies[index]);
             hud[0].set_hud_visible(false);
+            hud[1].set_hud_visible(false);
             enemies[index] = null;
             SoundsFX.playEnemyDead();
             System.out.println("Inimigo eliminado e removido do pane.");
         }
     }
-
+    private void kill_boss(Stage primaryStage){
+        pane.getChildren().remove(boss);
+        boss.setVisible(false);
+        SoundsFX.playEnemyDead();
+        WinScreen ws = new WinScreen();
+        ws.start(primaryStage);
+    }
     private void spawnBoss(){
         boss = new Boss(500,270);
-        pane.getChildren().add(boss);
+        hud[2] = new Hud(0,0);
+        pane.getChildren().addAll(boss,hud[2].getBoss_life(0,350,500));
     }
 
     private void include_obstacles(){
@@ -165,6 +202,19 @@ public class GameLoop {
             }
         });
     }
+    // Atualiza o HUD com base na vida do inimigo
+    private void updateHud(int enemylife) {
+        if (enemylife == 3) {
+            hud[0].set_hud_visible(true);
+            hud[1].set_hud_visible(false);
+        } else if (enemylife == 2) {
+            hud[0].set_hud_visible(false);
+            hud[1].set_hud_visible(true);
+        } else {
+            hud[0].set_hud_visible(false);
+            hud[1].set_hud_visible(false);
+        }
+    }
 
     private void keyboard_events(KeyCode code, Stage primaryStage) {
 
@@ -204,13 +254,13 @@ public class GameLoop {
             player.setKn_atk(0,'n');
         }
 
-        // Inicializa o spawn de inimigos no mapa
+        // Combate entre o player e os inimigos
         if (flag_enemy) {
             for (int i = 0; i < enemies.length; i++) {
                 if (enemies[i] != null && enemies[i].isVisible()) {
                     if (player.player_enemy_collision(enemies[i]) && code == KeyCode.SPACE) {
                         enemies[i].getAtkL().stop();
-                        hud[0].set_hud_visible(true);
+                        updateHud(enemylife);
                         System.out.println("hit");
                         enemylife--;
                         SoundsFX.playEnemyhit();
@@ -218,7 +268,7 @@ public class GameLoop {
                             kill_enemy(i);
                             kill++;
                             if (kill < 3) {
-                                enemylife = 5;
+                                enemylife = 4;
                                 spawnEnemy();
                             }
                             System.out.println("matou");
@@ -228,6 +278,21 @@ public class GameLoop {
                     }
                 }
             }
+        }
+        if(boss != null){
+            if(player.player_boss_collision(boss) && code == KeyCode.SPACE){
+                boss.getAtkL().stop();
+                bosslife--;
+                SoundsFX.playEnemyhit();
+                if(bosslife == 3){
+                    boss_rage_mode = true;
+                }
+                if(bosslife==0){
+                    kill_boss(primaryStage);
+                    System.out.println("WIN!");
+                }
+            }
+
         }
 
         // Inicia o boss quando o player eliminar todos os inimigos do mapa

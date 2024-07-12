@@ -103,14 +103,25 @@ public class Enemy extends ImageView {
     }
 
     public void followPlayer(Player player) {
-        // Posição do player
-        double playerX = player.getImageView().getX() + player.getWidth(); //este é o p1
-//        double playerX_new = player.getImageView().getX(); //este é o p0
+        if (enemy_collision_hit(player)) {
+            return; // Parar o movimento se houver colisão
+        }else{
+            setSpeed(1);
+        }
+        // Posicionamento dos pontos player em X
+        double playerX = player.getImageView().getX();
+        double playerWidth = player.getImageView().getFitWidth();
         double playerY = player.getImageView().getY();
 
-        // Distância entre o inimigo e o player
-        double deltaX = playerX - getX();
-        double deltaY = playerY - getY();
+        // Posicionamento do inimigo
+        double enemyX = getX();
+        double enemyY = getY();
+
+        // Calculo das distâncias entre os pontos dos inimigos para os pontos do player
+        double deltaX0 = playerX - (enemyX + getFitWidth());
+        double deltaX1 = (playerX + playerWidth) - enemyX;
+        double deltaX = Math.abs(deltaX0) < Math.abs(deltaX1) ? deltaX0 : deltaX1;
+        double deltaY = playerY - enemyY;
 
         // Verificar a maior distância entre o Player e o inimigo
         if (Math.abs(deltaX) > Math.abs(deltaY)) {
@@ -136,19 +147,39 @@ public class Enemy extends ImageView {
         }
     }
 
+
+
+
     // Colisão Player | Enemy
     public boolean enemy_collision_hit(Player player){
-        if(getX() == (player.getImageView().getX() + player.getWidth())){
+        if(getX() + getFitWidth()  == player.getImageView().getX()){
+            setSpeed(0);
             runR.stop();
             runL.stop();
+            atkR.play();
             SoundsFX.playCollision();
+            // Ataque da esquerda para direita, ou seja, colisão com o ponto p0 do player
+            return true;
+        }else if(getX() == player.getImageView().getX() + player.getImageView().getFitWidth()){
+            setSpeed(0);
+            runR.stop();
+            runL.stop();
+            atkL.play();
+            SoundsFX.playCollision();
+            // Ataque da direita para esquerta, ou seja, colisão com o ponto p1 do player
             return true;
         }
         return false;
     }
 
+
+
     public Timeline getAtkL() {
         return atkL;
+    }
+
+    public Timeline getAtkR(){
+        return atkR;
     }
 
     public Timeline getDeadL(){return deadL;}
