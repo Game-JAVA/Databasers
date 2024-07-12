@@ -320,6 +320,32 @@ classDiagram
 
 ```
 
+## ⏩ Sequence Diagram
+``` mermaid
+sequenceDiagram
+    participant GameInit
+    participant ControlScreen
+    participant LoadScreen
+    participant GameEnvironment
+    participant GameLoop
+    participant PauseScreen
+    participant GameOverScreen
+    
+    GameInit ->> ControlScreen: Initialize game
+    ControlScreen ->> LoadScreen: Show controls
+    LoadScreen ->> GameEnvironment: Load game resources
+    GameEnvironment ->> GameLoop: Start game loop
+    
+    GameLoop ->> PauseScreen: Pause game
+    PauseScreen ->> GameLoop: Resume game
+    
+    GameLoop ->> GameOverScreen: Game over
+    GameOverScreen ->> GameEnvironment: Restart game
+    GameOverScreen ->> GameInit: Go to main menu
+
+```
+
+
 ## 🤝 Collaborators
 
 The following people contributed to this project being carried out:
@@ -681,6 +707,30 @@ classDiagram
     class SoundsFX {
         +void play()
     }
+
+```
+## ⏩ Diagrama de sequência
+``` mermaid
+sequenceDiagram
+    participant GameInit
+    participant ControlScreen
+    participant LoadScreen
+    participant GameEnvironment
+    participant GameLoop
+    participant PauseScreen
+    participant GameOverScreen
+    
+    GameInit ->> ControlScreen: Initialize game
+    ControlScreen ->> LoadScreen: Show controls
+    LoadScreen ->> GameEnvironment: Load game resources
+    GameEnvironment ->> GameLoop: Start game loop
+    
+    GameLoop ->> PauseScreen: Pause game
+    PauseScreen ->> GameLoop: Resume game
+    
+    GameLoop ->> GameOverScreen: Game over
+    GameOverScreen ->> GameEnvironment: Restart game
+    GameOverScreen ->> GameInit: Go to main menu
 
 ```
 
